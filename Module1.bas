@@ -1,20 +1,19 @@
-Attribute VB_Name = "Module1"
 Sub vstavka_kvadratov()
 Dim oFD As FileDialog
 Dim x, lf As Long
 Dim SH As Shapes
 Dim j1s, dName
 
-    'назначаем переменной ссылку на экземпляр диалога
+    'РЅР°Р·РЅР°С‡Р°РµРј РїРµСЂРµРјРµРЅРЅРѕР№ СЃСЃС‹Р»РєСѓ РЅР° СЌРєР·РµРјРїР»СЏСЂ РґРёР°Р»РѕРіР°
 Set oFD = Application.FileDialog(msoFileDialogFolderPicker)
-With oFD 'используем короткое обращение к объекту
-    .Title = "Выбрать папку" '"заголовок окна диалога
-    .ButtonName = "Выбрать папку"
-    .Filters.Clear 'очищаем установленные ранее типы файлов
-    .InitialFileName = "C:\" '"назначаем первую папку отображения
-    .InitialView = msoFileDialogViewLargeIcons 'вид диалогового окна(доступно 9 вариантов)
-    If oFD.Show = 0 Then Exit Sub 'показывает диалог
-    x = .SelectedItems(1) 'считываем путь к папке
+With oFD 'РёСЃРїРѕР»СЊР·СѓРµРј РєРѕСЂРѕС‚РєРѕРµ РѕР±СЂР°С‰РµРЅРёРµ Рє РѕР±СЉРµРєС‚Сѓ
+    .Title = "Р’С‹Р±СЂР°С‚СЊ РїР°РїРєСѓ" '"Р·Р°РіРѕР»РѕРІРѕРє РѕРєРЅР° РґРёР°Р»РѕРіР°
+    .ButtonName = "Р’С‹Р±СЂР°С‚СЊ РїР°РїРєСѓ"
+    .Filters.Clear 'РѕС‡РёС‰Р°РµРј СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹Рµ СЂР°РЅРµРµ С‚РёРїС‹ С„Р°Р№Р»РѕРІ
+    .InitialFileName = "C:\" '"РЅР°Р·РЅР°С‡Р°РµРј РїРµСЂРІСѓСЋ РїР°РїРєСѓ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
+    .InitialView = msoFileDialogViewLargeIcons 'РІРёРґ РґРёР°Р»РѕРіРѕРІРѕРіРѕ РѕРєРЅР°(РґРѕСЃС‚СѓРїРЅРѕ 9 РІР°СЂРёР°РЅС‚РѕРІ)
+    If oFD.Show = 0 Then Exit Sub 'РїРѕРєР°Р·С‹РІР°РµС‚ РґРёР°Р»РѕРі
+    x = .SelectedItems(1) 'СЃС‡РёС‚С‹РІР°РµРј РїСѓС‚СЊ Рє РїР°РїРєРµ
 End With
 Set oFD = Nothing
 
@@ -24,14 +23,14 @@ Do While dName <> ""
     Documents.Open FileName:=x & "\" & dName
     j1s = Word.ActiveDocument.Shapes.Count
     Set SH = ActiveDocument.Shapes
-    Selection.EndKey Unit:=wdStory ' отматываем на конец документа
+    Selection.EndKey Unit:=wdStory ' РѕС‚РјР°С‚С‹РІР°РµРј РЅР° РєРѕРЅРµС† РґРѕРєСѓРјРµРЅС‚Р°
     
     If j1s = 0 Then
-        SH.AddShape(msoShapeRectangle, 0, 780, 600, 100).Select 'добавление прямоугольника по низу листа
+        SH.AddShape(msoShapeRectangle, 0, 780, 600, 100).Select 'РґРѕР±Р°РІР»РµРЅРёРµ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР° РїРѕ РЅРёР·Сѓ Р»РёСЃС‚Р°
         SH.Item(1).Select
     Else
         SH.Item(j1s).Select
-        Selection.Delete ' удаление последней фигуры, надо ли?
+        Selection.Delete ' СѓРґР°Р»РµРЅРёРµ РїРѕСЃР»РµРґРЅРµР№ С„РёРіСѓСЂС‹, РЅР°РґРѕ Р»Рё?
         SH.AddShape(msoShapeRectangle, 0, 780, 600, 100).Select
         SH.Item(j1s).Select
     End If
@@ -53,6 +52,11 @@ Do While dName <> ""
     dName = Dir
 Loop
 Set SH = Nothing
-MsgBox ("Закончил"), , ""
+MsgBox ("Р—Р°РєРѕРЅС‡РёР»"), , ""
 
 End Sub
+
+
+
+
+
