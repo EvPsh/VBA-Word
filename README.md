@@ -11,3 +11,4 @@ getDirs.bas - Function Get_DirS(path As String), Sub test(). Функция по
 
 cpTable.bas - Sub cpTable(). Копирование таблицы из одного файла в другой.
 
+Summa1.bas - Sub Summa1(). Подсчёт суммы в строках таблицы и вывод в последней строке этой же таблицы результата суммирования.
